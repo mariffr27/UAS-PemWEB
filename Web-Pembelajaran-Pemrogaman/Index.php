@@ -1,5 +1,4 @@
 <?php
-// File ini menggabungkan PHP dengan HTML untuk membuat halaman dinamis.
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,14 +14,15 @@
 <body>
     <header>
         <nav>
-            <div class="logo">DragoCode</div>
+            <img src="assets/images/logo.png" alt="" width="112px">
             <ul>
                 <li><a href="#">Beranda</a></li>
-                <li><a href="#">Kelas</a></li>
+                <li><a href="menu-class.php">Kelas</a></li>
                 <li><a href="#">Forum</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="menu-aboutUs.php">About Us</a></li>
             </ul>
-            <button class="btn-login">Masuk</button>
+            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+            
         </nav>
     </header>
 
@@ -109,7 +109,7 @@
                 </div>
                 <div class="review-card">
                     <div class="review-content">
-                        <img src="https://thumbs.dreamstime.com/b/cute-boy-face-cartoon-cute-boy-face-cartoon-vector-illustration-graphic-design-110654727.jpg" alt="Pengguna 2" class="review-image">
+                        <img src="assets/images/userMan-img.png" alt="Pengguna 2" class="review-image">
                         <h4 class="review-title">Aditya D</h4>
                     </div>
                     <p class="review-description">“Saya suka pelajaran interaktif dan bagaimana komunitasnya sangat menyenangkan!”</p>
