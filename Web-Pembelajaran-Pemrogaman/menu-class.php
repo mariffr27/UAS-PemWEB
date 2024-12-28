@@ -68,7 +68,7 @@
           <a href="#">Mulai</a>
         </div>
       </div>
-      <div class="card" data-id="datascience" >
+      <div class="card" data-id="datascience  " >
         <img src="assets/images/class-img4.jpg" alt="Data Science">
         <div class="card-content">
           <h3>Data Science Course</h3>

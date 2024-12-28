@@ -1,0 +1,109 @@
+{
+    "frontend": {
+        "title": "Front-End Web Developer",
+        "description": "Pelajari HTML, CSS, JavaScript, dan React untuk menjadi pengembang front-end profesional.",
+        "materi": "5+ Materi Front-End",
+        "materiVideo": "20+ Materi Front-End",
+        "image": "assets/images/class-img1.jpg",
+        "videoUrls": [
+            {
+                "title": "HTML Dasar: Pendahuluan HTML",
+                "url": "https://www.youtube.com/embed/NBZ9Ro6UKV8?si=iTooVaS-5_fN7v3d",
+                "duration": "15 Min"
+            },
+            {
+                "title": "CSS Dasar: Pendahuluan",
+                "url": "https://www.youtube.com/embed/CleFk3BZB3g?si=bS6bQBkkgy2EWA1l",
+                "duration": "11 Min"
+            },
+            {
+                "title": "JavaScript Basics",
+                "url": "https://www.youtube.com/embed/RUTV_5m4VeI?si=HburqT_OYf1pl1ll",
+                "duration": "28 Min"
+            },
+            {
+                "title": "Tutorial REACT 'Paling Masuk Akal'  untuk PEMULA ",
+                "url": "https://www.youtube.com/embed/kcnwI_5nKyA?si=ElPrpzoWQDPKj_AX",
+                "duration": "28 Min"
+            }
+        ]
+    },
+    "backend": {
+        "title": "Back-End Web Developer",
+        "description": "Pelajari Node.js, Python, PHP, dan Java untuk pengembangan server.",
+        "materi": "5+ Materi Front-End",
+        "materiVideo": "10+ Materi Front-End",
+        "image": "assets/images/class-img2.jpg",
+        "videoUrls": [
+            {
+                "title": "Belajar NodeJS | Apa Itu NodeJS?",
+                "url": "https://www.youtube.com/embed/sSLJx5t4OJ4?si=ASKceNuwFmBiC_FA",
+                "duration": "20 Min"
+            },
+            {
+                "title": "What To Learn To Become a Python Backend Developer",
+                "url": "https://www.youtube.com/embed/pbP5bqfbUPk?si=3aXpdhOaKqc5SMAa",
+                "duration": "11 Min"
+            },
+            {
+                "title": "Belajar PHP untuk PEMULA",
+                "url": "https://www.youtube.com/embed/l1W2OwV5rgY?si=CL3DT3OwxR9EQhEP",
+                "duration": "17 Min"
+            },
+            {
+                "title": "Backend Development Full Course 2024 | Java, JVM, System Design, Spring boot | Backend Mastery",
+                "url": "https://www.youtube.com/embed/tQWxa54HpSs?si=kmjIBYEww1i1VHqd",
+                "duration": "24 Min"
+            }
+        ]   
+    },
+    "mobile": {
+        "title": "Mobile Application Developer",
+        "description": "Kuasai Flutter, Kotlin, dan Swift untuk pengembangan aplikasi mobile.",
+        "materi": "5+ Materi Front-End",
+        "materiVideo": "20+ Materi Front-End",
+        "image": "assets/images/class-img3.jpg",
+        "videoUrls": [
+            {
+                "title": "Flutter Course for Beginners – 37-hour Cross Platform App Development Tutorial",
+                "url": "https://www.youtube.com/embed/VPvVD8t02U8?si=1jOur6C1uqDD3cai",
+                "duration": "37 Hour"
+            },
+            {
+                "title": "Learn Kotlin Programming – Full Course for Beginners",
+                "url": "https://www.youtube.com/embed/CleFk3BZB3g?si=https://www.youtube.com/embed/EExSSotojVI?si=HHHGYM5tpAgU7HMO",
+                "duration": "13 Hour"
+            },
+            {
+                "title": "Swift Programming Tutorial – Full Course for Beginners",
+                "url": "https://www.youtube.com/embed/8Xg7E9shq0U?si=cUZEnPGK0qDMy0MO",
+                "duration": "7 Hour"
+            }
+        ]
+    },
+    "datascience": {
+        "title": "Data Science Course",
+        "description": "Belajar Python, R, dan SQL untuk menjadi seorang Data Scientist.",
+        "materi": "5+ Materi Front-End",
+        "materiVideo": "12+ Materi Front-End",
+        "image": "assets/images/class-img4.jpg",
+        "videoUrls": [
+            {
+                "title": "Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)",
+                "url": "https://www.youtube.com/embed/r-uOLxNrNk8?si=T3is-kUj2llOXMgF",
+                "duration": "4 Hour"
+            },
+            {
+                "title": "R For Data Science Full Course | Data Science With R Full Course |Data Science Tutorial",
+                "url": "https://www.youtube.com/embed/CleFk3BZB3g?si=bS6bQBkkgy2EWA1lhttps://www.youtube.com/embed/iROHLA_TXQM?si=dK4JiNhmv4MKu3ky",
+                "duration": "6 Hour"
+            },
+            {
+                "title": "SQL For Data Science Tutorial | Learn SQL Database For Data Science | Edureka",
+                "url": "https://www.youtube.com/embed/sTiWTx0ifaM?si=P0w_tz7-xxttzsa_",
+                "duration": "39 Min"
+            }
+        ]
+    }
+
+}

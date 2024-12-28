@@ -1,39 +1,15 @@
 <?php
+// Memeriksa apakah parameter 'course' ada dalam URL
 $course = isset($_GET['course']) ? $_GET['course'] : 'default';
 
-$courses = [
-    'frontend' => [
-        'title' => 'Front-End Web Developer',
-        'description' => 'Pelajari HTML, CSS, JavaScript, dan React untuk menjadi pengembang front-end profesional.',
-        'materi' => '5+ Materi Front-End',
-        'materiVideo' => '20+ Materi Front-End',    
-        'image' => 'assets/images/class-img1.jpg',
-    ],
-    'backend' => [
-        'title' => 'Back-End Web Developer',
-        'description' => 'Pelajari Node.js, Python, PHP, dan Java untuk pengembangan server.',
-        'materi' => '5+ Materi Front-End',
-        'materiVideo' => '10+ Materi Front-End',    
-        'image' => 'assets/images/class-img2.jpg',
-    ],
-    'mobile' => [
-        'title' => 'Mobile Application Developer',
-        'description' => 'Kuasai Flutter, Kotlin, dan Swift untuk pengembangan aplikasi mobile.',
-        'materi' => '5+ Materi Front-End',
-        'materiVideo' => '20+ Materi Front-End', 
-        'image' => 'assets/images/class-img3.jpg',
-    ],
-    'datascience' => [
-        'title' => 'Data Science Course',   
-        'description' => 'Belajar Python, R, dan SQL untuk menjadi seorang Data Scientist.',
-        'materi' => '5+ Materi Front-End',
-        'materiVideo' => '12+ Materi Front-End', 
-        'image' => 'assets/images/class-img4.jpg',
-    ],
-];
+// Memuat file JSON
+$jsonData = file_get_contents('course.json');
+$courses = json_decode($jsonData, true); // Mengonversi JSON menjadi array PHP
 
-$courseData = $courses[$course] ?? $courses['frontend']; // Default jika ID tidak ditemukan
+// Memeriksa apakah course yang diminta ada dalam array courses
+$courseData = isset($courses[$course]) ? $courses[$course] : $courses['frontend']; // Default jika course tidak ditemukan
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
@@ -294,8 +270,7 @@ $courseData = $courses[$course] ?? $courses['frontend']; // Default jika ID tida
                     </div>
                     <p>Dibuat oleh <span id="course-creator">Muhamad Arif, Rozak arts</span></p>
                 </div>
-            <button class="btn-enroll-class">Gabung Kelas</button>
-
+                <button class="btn-enroll-class" data-id="<?= htmlspecialchars($course) ?>">Gabung Kelas</button>
             </div>
         </div>
     </div>
@@ -308,5 +283,19 @@ $courseData = $courses[$course] ?? $courses['frontend']; // Default jika ID tida
             <a href="#">LinkedIn</a>
         </div>
     </footer>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll(".btn-enroll-class");
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const courseId = button.getAttribute("data-id");
+      // Redirect ke halaman menu-class-course.php dengan parameter courseId
+      window.location.href = `menu-class-course.php?course=${courseId}`;
+    });
+  });
+});
+</script>
+
 </body>
 </html>
