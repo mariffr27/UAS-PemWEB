@@ -1,5 +1,9 @@
 <?php
+    session_start();
+    $is_logged_in = isset($_SESSION['user']); // Cek apakah user login
+    echo "<script>var isLoggedIn = " . json_encode($is_logged_in) . ";</script>";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
 </head>
 <body>
     <header>
-        <nav>
+    <nav>
             <img src="assets/images/logo.png" alt="" width="112px">
             <ul>
                 <li><a href="#">Beranda</a></li>
@@ -21,8 +25,14 @@
                 <li><a href="#">Forum</a></li>
                 <li><a href="menu-aboutUs.php">About Us</a></li>
             </ul>
-            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
-            
+            <?php if (isset($_SESSION['user'])): ?>
+                <div class="user-info">
+                    <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
+                    <a href="logout.php"><button class="btn-logout">Keluar</button></a>
+                </div>
+            <?php else: ?>
+                <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+            <?php endif; ?>
         </nav>
     </header>
 
@@ -163,5 +173,25 @@
             </div>
         </div>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Seleksi tombol dengan class 'btn-primary'
+        const startLearningButton = document.querySelector(".btn-primary");
+
+        if (startLearningButton) {
+            // Tambahkan event listener untuk klik tombol
+            startLearningButton.addEventListener("click", function () {
+                if (isLoggedIn) {
+                    // Jika sudah login, arahkan ke halaman kelas
+                    window.location.href = "menu-class.php";
+                } else {
+                    // Jika belum login, arahkan ke halaman login
+                    window.location.href = "menu-login.php";
+                }
+            });
+        }
+    });
+</script>
+
 </body>
 </html>

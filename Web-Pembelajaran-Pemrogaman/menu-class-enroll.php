@@ -1,3 +1,40 @@
+<?php
+$course = isset($_GET['course']) ? $_GET['course'] : 'default';
+
+$courses = [
+    'frontend' => [
+        'title' => 'Front-End Web Developer',
+        'description' => 'Pelajari HTML, CSS, JavaScript, dan React untuk menjadi pengembang front-end profesional.',
+        'materi' => '5+ Materi Front-End',
+        'materiVideo' => '20+ Materi Front-End',    
+        'image' => 'assets/images/class-img1.jpg',
+    ],
+    'backend' => [
+        'title' => 'Back-End Web Developer',
+        'description' => 'Pelajari Node.js, Python, PHP, dan Java untuk pengembangan server.',
+        'materi' => '5+ Materi Front-End',
+        'materiVideo' => '10+ Materi Front-End',    
+        'image' => 'assets/images/class-img2.jpg',
+    ],
+    'mobile' => [
+        'title' => 'Mobile Application Developer',
+        'description' => 'Kuasai Flutter, Kotlin, dan Swift untuk pengembangan aplikasi mobile.',
+        'materi' => '5+ Materi Front-End',
+        'materiVideo' => '20+ Materi Front-End', 
+        'image' => 'assets/images/class-img3.jpg',
+    ],
+    'datascience' => [
+        'title' => 'Data Science Course',   
+        'description' => 'Belajar Python, R, dan SQL untuk menjadi seorang Data Scientist.',
+        'materi' => '5+ Materi Front-End',
+        'materiVideo' => '12+ Materi Front-End', 
+        'image' => 'assets/images/class-img4.jpg',
+    ],
+];
+
+$courseData = $courses[$course] ?? $courses['frontend']; // Default jika ID tidak ditemukan
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -161,6 +198,25 @@
             color: #0066cc;
             cursor: pointer;
         }
+.btn-enroll-class {
+    width: 100%;
+    background-color: black;
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+    transition: background-color 0.3s; 
+}
+
+.btn-enroll-class:hover {
+    background-color: #333; /* Warna latar belakang saat hover */
+}
 
         footer {
             background-color: #003366;
@@ -223,24 +279,24 @@
 
     <div class="details-section">
         <div class="details-card">
-            <img src="assets/images/class-img1.jpg" alt="Kursus Web Developer">
+            <img src="<?= htmlspecialchars($courseData['image']); ?>" alt="<?= htmlspecialchars($courseData['title']); ?>">
             <div class="text-content">
-                <h3>The Front-End Web Developer: HTML, CSS, JS & React</h3>
-                <p>Kursus ini mengajarkan keterampilan praktis untuk membangun antarmuka web yang responsif dan interaktif. Anda akan mempelajari dasar-dasar HTML, CSS, JavaScript, dan React dengan berbagai video tutorial dan materi belajar interaktif.</p>
+                <h3><?= htmlspecialchars($courseData['title']); ?></h3>
+                <p><?= htmlspecialchars($courseData['description']); ?></p>
                 <div class="content-img">
                     <div class="detail-content">
                         <img src="assets/images/detail-course-img.png" alt="Materi Pembelajaran">
-                        <p>10+ Materi Front-End</p>
+                        <p><?= htmlspecialchars($courseData['materi']); ?></p>
                     </div>
                     <div class="detail-content">
                     <img src="assets/images/detail-course-img2.png" alt="Vidio Pembelajaran">
-                        <p>20+ Materi Front-End</p>
+                        <p><?= htmlspecialchars($courseData['materiVideo']); ?></p>
                     </div>
                     <p>Dibuat oleh <span id="course-creator">Muhamad Arif, Rozak arts</span></p>
-                    
                 </div>
-            </div>
+            <button class="btn-enroll-class">Gabung Kelas</button>
 
+            </div>
         </div>
     </div>
 

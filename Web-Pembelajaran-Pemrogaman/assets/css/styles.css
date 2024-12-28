@@ -65,6 +65,34 @@ nav ul li {
     cursor: pointer;
 }
 
+/* Login user */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-info span {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+}
+
+nav .btn-logout {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+nav .btn-logout:hover {
+    background-color: #e63939;
+}
+
+
 /* Hero Section */
 .hero {
     display: flex;

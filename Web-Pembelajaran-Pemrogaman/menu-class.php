@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    $is_logged_in = isset($_SESSION['user']); // Cek apakah user login
+    echo "<script>var isLoggedIn = " . json_encode($is_logged_in) . ";</script>";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,8 +23,15 @@
             <li><a href="menu-forum.php">Forum</a></li>
             <li><a href="menu-aboutUs.php">About Us</a></li>
         </ul>
-        <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
-      </nav>
+        <?php if (isset($_SESSION['user'])): ?>
+            <div class="user-info">
+                <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
+                <a href="logout.php"><button class="btn-logout">Keluar</button></a>
+            </div>
+        <?php else: ?>
+            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+        <?php endif; ?>
+    </nav>
   </header>
   <div class="container">
         <section class="header-section">
@@ -31,7 +44,7 @@
         </section>
   <section>
     <div class="cards">
-      <div class="card">
+      <div class="card" data-id="frontend" >
         <img src="assets/images/class-img1.jpg" alt="Front-End">
         <div class="card-content">
           <h3>Front-End Web Developer</h3>
@@ -39,7 +52,7 @@
           <a href="menu-class-enroll.php">Gabung</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-id="backend">
         <img src="assets/images/class-img2.jpg" alt="Back-End">
         <div class="card-content">
           <h3>Back-End Web Developer</h3>
@@ -47,7 +60,7 @@
           <a href="#">Mulai</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-id="mobile">
         <img src="assets/images/class-img3.jpg" alt="Mobile">
         <div class="card-content">
           <h3>Mobile Application Developer</h3>
@@ -55,7 +68,7 @@
           <a href="#">Mulai</a>
         </div>
       </div>
-      <div class="card">
+      <div class="card" data-id="datascience" >
         <img src="assets/images/class-img4.jpg" alt="Data Science">
         <div class="card-content">
           <h3>Data Science Course</h3>
@@ -166,5 +179,20 @@
         </div>
     </div>
   </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        const courseId = card.getAttribute("data-id");
+        // Redirect to the specific course page or dynamically load content
+        window.location.href = `menu-class-enroll.php?course=${courseId}`;
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
