@@ -14,16 +14,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <nav>
-        <img src="assets/images/logo.png" alt="" width="112px">
+<header>
+        <nav>
+            <div class="main-bar">
+                <img src="assets/images/logo.png" alt="logo" class="logo-web" style="max-width: 100px;">
+                <button class="menu-toggle">☰</button>
+                <ul class="navbar">
+                    <li><a href="Index.php">Beranda</a></li>
+                    <li><a href="menu-class.php">Kelas</a></li>
+                    <li><a href="menu-forum.php">Forum</a></li>
+                    <li><a href="menu-aboutUs.php">About Us</a></li>        
+                </ul>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <div class="user-info">
+                        <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
+                        <a href="logout.php"><button class="btn-logout">Keluar</button></a>
+                    </div>
+                <?php else: ?>
+                    <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+                <?php endif; ?>
+            </div>
+        </nav>
+    
+    <div class="sidebar">
+        <span class="close-btn">&times;</span>
         <ul>
             <li><a href="Index.php">Beranda</a></li>
             <li><a href="menu-class.php">Kelas</a></li>
             <li><a href="menu-forum.php">Forum</a></li>
             <li><a href="menu-aboutUs.php">About Us</a></li>
-        </ul>
-        <?php if (isset($_SESSION['user'])): ?>
+            <li>
+            <?php if (isset($_SESSION['user'])): ?>
             <div class="user-info">
                 <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
                 <a href="logout.php"><button class="btn-logout">Keluar</button></a>
@@ -31,156 +52,142 @@
         <?php else: ?>
             <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
         <?php endif; ?>
-    </nav>
-  </header>
+            </li>
+        </ul>
+    </div>
+        
+</header>
   <div class="container">
         <section class="header-section">
             <h1>Pelajari Berbagai Bahasa Pemrograman Terpopuler Dan Relevan Di Industri</h1>
 
             <div class="search-bar">
-                <input type="text" placeholder="Cari Kursus">
-                <button>Cari</button>
-            </div>
+    <input id="search-input" type="text" placeholder="Cari Kursus">
+    <button id="search-button">Cari</button>
+</div>
+<div id="search-results"></div>
         </section>
-  <section>
-    <div class="cards">
-      <div class="card" data-id="frontend" >
-        <img src="assets/images/class-img1.jpg" alt="Front-End">
-        <div class="card-content">
-          <h3>Front-End Web Developer</h3>
-          <p>HTML, CSS, JS & React</p>
-          <a href="menu-class-enroll.php">Gabung</a>
-        </div>
-      </div>
-      <div class="card" data-id="backend">
-        <img src="assets/images/class-img2.jpg" alt="Back-End">
-        <div class="card-content">
-          <h3>Back-End Web Developer</h3>
-          <p>Node.js, Python, PHP, Java</p>
-          <a href="#">Mulai</a>
-        </div>
-      </div>
-      <div class="card" data-id="mobile">
-        <img src="assets/images/class-img3.jpg" alt="Mobile">
-        <div class="card-content">
-          <h3>Mobile Application Developer</h3>
-          <p>Flutter, Kotlin, Swift</p>
-          <a href="#">Mulai</a>
-        </div>
-      </div>
-      <div class="card" data-id="datascience  " >
-        <img src="assets/images/class-img4.jpg" alt="Data Science">
-        <div class="card-content">
-          <h3>Data Science Course</h3>
-          <p>Python, R, SQL</p>
-          <a href="#">Mulai</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-    <section class="news-discussion-section">
-      <h1>Forum diskusi terkait kelas</h1>
-      <div class="card-news">
-        <div class="card-header">
-          <img src="assets/images/userMan-img.png" alt="User Profile Picture">
-          <div class="user-info">
-            <h3>Muhamad Arif</h3>
-            <p>25 Desember 2024</p>
-          </div>
-        </div>
-        <div class="card-news-content">
-          <p class="hashtags">
-            #apa itu firebase #backend as a service #software developer
-          </p>
-          <h2>Apa itu Firebase? Pengertian dan Manfaatnya bagi Developer Aplikasi</h2>
-        </div>
-        <div class="card-footer">
-          <div class="reactions">
-            <img src="assets/images/like-icon.png" alt="Love Emoji"> 3 Reaksi
-          </div>
-          <div class="comments">
-            <img src="assets/images/comment-icon.png" alt="Comment Emoji"> 2 Komentar
-          </div>
-          <div class="save">
-            <img src="assets/images/save-icon.png" alt="Save Emoji"> 2 Komentar
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="news-discussion-section">
-      <div class="card-news">
-        <div class="card-header">
-          <img src="assets/images/userMan-img.png" alt="User Profile Picture">
-          <div class="user-info">
-            <h3>Muhamad Arif</h3>
-            <p>25 Desember 2024</p>
-          </div>
-        </div>
-        <div class="card-news-content">
-          <p class="hashtags">
-            #apa itu firebase #backend as a service #software developer
-          </p>
-          <h2>Apa itu Firebase? Pengertian dan Manfaatnya bagi Developer Aplikasi</h2>
-        </div>
-        <div class="card-footer">
-          <div class="reactions">
-            <img src="assets/images/like-icon.png" alt="Love Emoji"> 3 Reaksi
-          </div>
-          <div class="comments">
-            <img src="assets/images/comment-icon.png" alt="Comment Emoji"> 2 Komentar
-          </div>
-          <div class="save">
-            <img src="assets/images/save-icon.png" alt="Save Emoji"> 2 Komentar
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="news-discussion-section">
-      <div class="card-news">
-        <div class="card-header">
-          <img src="assets/images/userMan-img.png" alt="User Profile Picture">
-          <div class="user-info">
-            <h3>Muhamad Arif</h3>
-            <p>25 Desember 2024</p>
-          </div>
-        </div>
-        <div class="card-news-content">
-          <p class="hashtags">
-            #apa itu firebase #backend as a service #software developer
-          </p>
-          <h2>Apa itu Firebase? Pengertian dan Manfaatnya bagi Developer Aplikasi</h2>
-        </div>
-        <div class="card-footer">
-          <div class="reactions">
-            <img src="assets/images/like-icon.png" alt="Love Emoji"> 3 Reaksi
-          </div>
-          <div class="comments">
-            <img src="assets/images/comment-icon.png" alt="Comment Emoji"> 2 Komentar
-          </div>
-          <div class="save">
-            <img src="assets/images/save-icon.png" alt="Save Emoji"> 2 Komentar
-          </div>
-        </div>
-      </div>
-    </section>
+        <section>
+  <div class="cards"></div>
+</section>
+
     
   </div>
 
 
   <footer>
-    <div class="footer-content">
-        <p>Mentor Terbaik Untuk Membantu Anda Menguasai Pemrograman dan Beragam Teknologi</p>
-        <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Terms of Use</a>
-            <a href="#">Privacy Policy</a>
+        <div class="footer-content">
+            <p>Mentor Terbaik Untuk Membantu Anda Menguasai Pemrograman dan Beragam Teknologi</p>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Privacy Policy</a>
+            </div>
         </div>
-    </div>
-  </footer>
+    </footer>
 
   <script>
+    // Search bar
+    document.getElementById("search-button").addEventListener("click", function () {
+        const query = document.getElementById("search-input").value.toLowerCase();
+        const cards = document.querySelectorAll(".card");
+
+        fetch("course.json")
+            .then(response => response.json())
+            .then(courses => {
+                // Filter matching courses
+                const courseKeys = Object.keys(courses).filter(key =>
+                    courses[key].title.toLowerCase().includes(query)
+                );
+
+                // Show/hide cards based on search results
+                cards.forEach(card => {
+                    const cardId = card.getAttribute("data-id");
+                    if (courseKeys.includes(cardId)) {
+                        card.style.display = "block"; // Show matching card
+                    } else {
+                        card.style.display = "none"; // Hide non-matching card
+                    }
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching courses:", error);
+            });
+    });
+
+
+  // Card
+
+  // Ambil elemen kontainer
+const cardsContainer = document.querySelector('.cards');
+
+// Fungsi untuk membuat kartu
+function createCard(course, key) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.id = key;
+
+  card.innerHTML = `
+    <img src="${course.image}" alt="${course.title}">
+    <div class="card-content">
+      <h3>${course.title}</h3>
+      <p>${course.description}</p>
+      <a href="${course.link}" target="_blank">Mulai</a>
+    </div>
+  `;
+
+
+
+  return card;
+
+}
+
+// Ambil data dari course.json
+fetch('course.json')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Gagal mengambil data JSON');
+    }
+    return response.json(); // Mengubah response menjadi JSON
+  })
+  .then(courses => {
+    // Iterasi melalui kunci objek JSON
+    Object.keys(courses).forEach(key => {
+      const course = courses[key];
+      const card = createCard(course, key);
+      cardsContainer.appendChild(card);
+    });
+  })
+  .catch(error => {
+    console.error('Terjadi kesalahan:', error);
+  });
+
+
+  cardsContainer.addEventListener('click', (event) => {
+  if (event.target.tagName === 'A') {
+    const courseId = event.target.closest('.card').dataset.id;
+    console.log(`Kursus "${courseId}" dipilih oleh pengguna.`);
+    // Lanjutkan ke link
+  }
+});
+  // end
+
+    const sidebar = document.querySelector('.sidebar');
+    const toggleButton = document.querySelector('.menu-toggle'); // Tombol untuk membuka sidebar
+    const closeButton = document.querySelector('.close-btn'); // Tombol untuk menutup sidebar
+
+    // Fungsi untuk membuka sidebar
+    toggleButton.addEventListener('click', () => {
+        sidebar.classList.add('active');
+    });
+
+    // Fungsi untuk menutup sidebar
+    closeButton.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+
   document.addEventListener("DOMContentLoaded", function () {
     const cards = document.querySelectorAll(".card");
 
@@ -192,6 +199,8 @@
       });
     });
   });
+
+  
 </script>
 
 </body>

@@ -32,44 +32,42 @@ header {
     z-index: 1000;
 }
 
-nav {
+.main-bar {
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: space-between;
 }
 
-nav ul {
+.main-bar ul {
     display: flex;
     gap: 20px;
     margin: 0;
 }
 
-nav ul li {
+.main-bar ul li {
     font-size: 1rem;
 }
-
-.navbar {
+.main-bar .navbar {
     display: flex;
     list-style: none;
 }
 
-.menu-toggle {
+.main-bar .menu-toggle {
     display: none; /* Sembunyikan secara default */
     font-size: 1.5rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
-    z-index: 1001;
 }
 
-.navbar ul li a {
+.main-bar .navbar ul li a {
     text-decoration: none;
     color: #333;
 }
 
 
-.btn-login {
+.main-bar .btn-login {
     padding: 8px 16px;
     background: #007BFF;
     color: #fff;
@@ -78,8 +76,6 @@ nav ul li {
     cursor: pointer;
 
 }
-
-
 
 /* Sidebar */
 .sidebar {
@@ -109,19 +105,6 @@ nav ul li {
     cursor: pointer;
 }
 
-/* Overlay (opsional) */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999; /* Di bawah sidebar */
-    transition: opacity 0.3s ease-in-out;
-}
-
 
 .sidebar ul {
     list-style: none;
@@ -129,7 +112,7 @@ nav ul li {
 }
 
 .sidebar ul li {
-    margin: 20px 0;
+    margin: 30px 0;
 }
 
 .sidebar ul a {
@@ -137,6 +120,11 @@ nav ul li {
     color: #fff;
     font-size: 18px;
 }
+
+.sidebar ul li a:hover {
+    color: #3498db; /* Warna saat hover */
+}
+
 
 .close-btn {
     font-size: 24px;
@@ -146,13 +134,7 @@ nav ul li {
     color: #fff;
 }
 
-
 /* Login user */
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
 
 .user-info span {
     font-size: 16px;
@@ -160,18 +142,15 @@ nav ul li {
     font-weight: 600;
 }
 
-nav .btn-logout {
-    background-color: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-nav .btn-logout:hover {
-    background-color: #e63939;
+.btn-logout, .btn-login {
+    background-color: #e74c3c; /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    border: none; /* Menghilangkan border */
+    padding: 10px 15px; /* Padding dalam tombol */
+    border-radius: 5px; /* Sudut membulat */
+    cursor: pointer; /* Kursor pointer saat hover */
+    font-size: 16px; /* Ukuran font */
+    transition: background-color 0.3s; /* Transisi warna latar belakang */
 }
 
 
@@ -540,14 +519,34 @@ footer {
 @media screen and (max-width: 768px) {
     .navbar {
         display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        padding: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        z-index: 10;
     }
 
-    .menu-toggle {
+    .user-info {
+        display: none;
+        float: right;
+    }
+
+    .main-bar .menu-toggle {
         display: block;
+        float: right;
     }
 
-    .btn-login {
+    .main-bar .btn-login {
         display: none; /* Sembunyikan di navbar */
+    }
+
+    .main-bar .btn-logout {
+        display: none;
     }
 
     /* Class Hero */
@@ -600,13 +599,34 @@ footer {
         display: none;
     }
 
-    .menu-toggle {
-        display: block;
+    .main-bar .user-info {
+        display: none;
     }
 
-    .btn-login {
-        display: none; /* Sembunyikan di navbar */
+    .main-bar .btn-login {
+        display: none;
     }
+
+    .main-bar .btn-logout {
+        display: none;
+    }
+
+    .main-bar .menu-toggle {
+        display: block;
+        float: right;
+    }
+
+    .sidebar .user-info {
+        display: block;
+        float: left;
+    }
+
+    .sidebar .btn-login {
+        display: block;
+        float: left;
+    }
+
+    /* Section */
     .hero {
         padding: 20px; /* Kurangi padding */
     }

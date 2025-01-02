@@ -5,6 +5,38 @@
         "materi": "5+ Materi Front-End",
         "materiVideo": "20+ Materi Front-End",
         "image": "assets/images/class-img1.jpg",
+        "link": "./menu-class-enroll.php?course=frontend",
+        "videoUrls": [
+            {
+                "title": "HTML Dasar: Pendahuluan HTML",
+                "url": "https://www.youtube.com/embed/NBZ9Ro6UKV8?si=iTooVaS-5_fN7v3d",
+                "duration": "15 Min"
+            },
+            {
+                "title": "CSS Dasar: Pendahuluan",
+                "url": "https://www.youtube.com/embed/CleFk3BZB3g?si=bS6bQBkkgy2EWA1l",
+                "duration": "11 Min"
+            },
+            {
+                "title": "JavaScript Basics",
+                "url": "https://www.youtube.com/embed/RUTV_5m4VeI?si=HburqT_OYf1pl1ll",
+                "duration": "28 Min"
+            },
+            {
+                "title": "Tutorial REACT 'Paling Masuk Akal'  untuk PEMULA ",
+                "url": "https://www.youtube.com/embed/kcnwI_5nKyA?si=ElPrpzoWQDPKj_AX",
+                "duration": "28 Min"
+            }
+        ]
+    },
+
+    "frontend-adv": {
+        "title": "Front-End Web Developer Advenced",
+        "description": "Pelajari HTML, CSS, JavaScript, dan React untuk menjadi pengembang front-end profesional.",
+        "materi": "5+ Materi Front-End",
+        "materiVideo": "20+ Materi Front-End",
+        "image": "assets/images/class-img1.jpg",
+        "link": "menu-class-enroll.php?course=frontend-adv",
         "videoUrls": [
             {
                 "title": "HTML Dasar: Pendahuluan HTML",
@@ -34,6 +66,7 @@
         "materi": "5+ Materi Front-End",
         "materiVideo": "10+ Materi Front-End",
         "image": "assets/images/class-img2.jpg",
+        "link": "menu-class-enroll.php?course=backend",
         "videoUrls": [
             {
                 "title": "Belajar NodeJS | Apa Itu NodeJS?",
@@ -63,6 +96,7 @@
         "materi": "5+ Materi Front-End",
         "materiVideo": "20+ Materi Front-End",
         "image": "assets/images/class-img3.jpg",
+        "link": "menu-class-enroll.php?course=mobile",
         "videoUrls": [
             {
                 "title": "Flutter Course for Beginners – 37-hour Cross Platform App Development Tutorial",
@@ -87,6 +121,7 @@
         "materi": "5+ Materi Front-End",
         "materiVideo": "12+ Materi Front-End",
         "image": "assets/images/class-img4.jpg",
+        "link": "menu-class-enroll.php?course=datascience",
         "videoUrls": [
             {
                 "title": "Data Analysis with Python - Full Course for Beginners (Numpy, Pandas, Matplotlib, Seaborn)",

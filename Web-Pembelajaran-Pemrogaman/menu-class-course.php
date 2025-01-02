@@ -73,6 +73,8 @@ $courseData = isset($courses[$course]) ? $courses[$course] : $courses['frontend'
             font-size: 14px;
             color: #555;
         }
+
+      
     </style>
 </head>
 <body>
@@ -84,8 +86,10 @@ $courseData = isset($courses[$course]) ? $courses[$course] : $courses['frontend'
 
     <script> 
 
-const course = "<?php echo $course; ?>"; // Nilai 'course' dari PHP
+// Mendapatkan nilai 'course' dari PHP atau URL parameter jika ada
+const course = "<?php echo $course; ?>"; // Dapatkan nilai kursus dari PHP
 
+// Ambil data kursus dari file JSON
 fetch('course.json')
   .then(response => {
     if (!response.ok) {
@@ -94,38 +98,27 @@ fetch('course.json')
     return response.json();
   })
   .then(data => {
-    let videoData;
-
-    // Menyesuaikan jika 'course' adalah 'default' untuk mengambil video dari frontend
-    if (course === "frontend" || course === "default") {
-      videoData = data.frontend.videoUrls;
-    } else if (course === "backend") {
-      videoData = data.backend.videoUrls;
-    } else if (course === "mobile") {
-      videoData = data.mobile.videoUrls;
-    } else if (course === "datascience") {
-      videoData = data.datascience.videoUrls;
+    // Pastikan kursus yang dipilih ada dalam data JSON
+    if (data[course]) {
+      const videoData = data[course].videoUrls;  // Ambil video berdasarkan kursus yang dipilih
+      displayVideoData(videoData); // Tampilkan video sesuai data yang dipilih
     } else {
       console.error("Course not recognized:", course);
-      return;
     }
-
-    // Panggil fungsi untuk menampilkan video
-    displayVideoData(videoData);
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
 
-
+// Fungsi untuk menampilkan video berdasarkan data yang diambil
 function displayVideoData(videoData) {
     const videoButtons = document.getElementById('videoButtons');
     const videoPlayer = document.getElementById('videoPlayer');
 
-    // Clear any existing content
+    // Hapus konten video yang ada sebelumnya
     videoButtons.innerHTML = '';
 
-    // Iterate over the video data and create buttons
+    // Iterasi untuk membuat tombol untuk setiap video
     videoData.forEach(video => {
         const buttonCard = document.createElement('div');
         buttonCard.className = 'button-card';
@@ -134,13 +127,14 @@ function displayVideoData(videoData) {
             <div class="button-duration">${video.duration}</div>
         `;
         buttonCard.addEventListener('click', () => {
+            // Ubah sumber video yang diputar saat tombol diklik
             videoPlayer.src = video.url;
         });
         videoButtons.appendChild(buttonCard);
     });
 }
 
+</script>
 
-    </script>
 </body>
 </html>

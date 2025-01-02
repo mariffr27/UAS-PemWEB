@@ -33,5 +33,10 @@
         "email": "dadadaw",
         "name": "dawdawdawd",
         "password": "dawda"
+    },
+    {
+        "email": "admin",
+        "name": "admin",
+        "password": "admin"
     }
 ]

@@ -64,8 +64,9 @@ a {
 
 /* Header & Nav */
 
+/* Header */
 header {
-  background: #f8f9fa;
+  background: #f3f3f3;
   padding: 10px 20px;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -73,37 +74,125 @@ header {
   z-index: 1000;
 }
 
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #007BFF;
-}
-
-nav {
+.main-bar {
   display: flex;
   align-items: center;
   gap: 20px;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-nav ul {
+.main-bar ul {
   display: flex;
   gap: 20px;
   margin: 0;
 }
 
-nav ul li {
+.main-bar ul li {
   font-size: 1rem;
 }
+.main-bar .navbar {
+  display: flex;
+  list-style: none;
+}
 
-.btn-login {
+.main-bar .menu-toggle {
+  display: none; /* Sembunyikan secara default */
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.main-bar .navbar ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+.main-bar .btn-login {
   padding: 8px 16px;
   background: #007BFF;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -100%; /* Awalnya tersembunyi di sebelah kanan */
+  width: 250px;
+  height: 100%;
+  background-color: #007BFF;
+  color: #fff;
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  padding: 15px;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Bayangan di sisi kiri sidebar */
+  z-index: 999; /* Pastikan di atas elemen lainnya */
+}
+.sidebar.active {
+  right: 0; /* Geser sidebar masuk ke dalam layar */
+}
+
+/* Close Button (X) */
+.sidebar .close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin: 30px 0;
+}
+
+.sidebar ul a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 18px;
+}
+
+.sidebar ul li a:hover {
+  color: #3498db; /* Warna saat hover */
+}
+
+
+.close-btn {
+  font-size: 24px;
+  text-align: left; /* Tetap di kiri dalam sidebar */
+  cursor: pointer;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* Login user */
+
+.user-info span {
+  font-size: 16px;
+  color: #333;
+  font-weight: 600;
+}
+
+.btn-logout, .btn-login {
+  background-color: #e74c3c; /* Warna latar belakang tombol */
+  color: white; /* Warna teks tombol */
+  border: none; /* Menghilangkan border */
+  padding: 10px 15px; /* Padding dalam tombol */
+  border-radius: 5px; /* Sudut membulat */
+  cursor: pointer; /* Kursor pointer saat hover */
+  font-size: 16px; /* Ukuran font */
+  transition: background-color 0.3s; /* Transisi warna latar belakang */
 }
 
 /* Section */
@@ -118,7 +207,12 @@ section {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
+  justify-content: center; /* Pusatkan grid jika jumlah kartu kurang dari maksimum kolom */
+  padding: 20px;
+  max-width: 1200px; /* Opsional, untuk mencegah grid terlalu lebar */
+  margin: 0 auto; /* Pusatkan grid di tengah halaman */
 }
+
 
 .card {
   background: #fff;
@@ -136,8 +230,8 @@ section {
 
 .card img {
   width: 100%;
-  height: 150px;
-  object-fit: fill;
+  height: auto;
+  display: block;
 }
 
 .card-content {
@@ -282,3 +376,88 @@ footer {
   margin: 0 10px;
 }
 
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+  .navbar {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #fff;
+      padding: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      z-index: 10;
+  }
+
+  .user-info {
+      display: none;
+      float: right;
+  }
+
+  .menu-toggle {
+      display: block;
+      float: right;
+  }
+
+  .btn-login {
+      display: none; /* Sembunyikan di navbar */
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .main-bar .navbar {
+    display: none;
+}
+
+
+.main-bar .user-info {
+    display: none;
+}
+
+.main-bar .btn-login {
+    display: none;
+}
+
+.main-bar .btn-logout {
+    display: none;
+}
+
+.main-bar .menu-toggle {
+    display: block;
+    float: right;
+}
+
+.sidebar .user-info {
+    display: block;
+    float: left;
+}
+
+.sidebar .btn-login {
+    display: block;
+    float: left;
+}
+  .hero {
+      padding: 20px; /* Kurangi padding */
+  }
+
+  .hero-content h1 {
+      font-size: 1.8rem; /* Kurangi ukuran teks */
+  }
+
+  .hero-content p {
+      font-size: 0.9rem; /* Kurangi ukuran teks deskripsi */
+  }
+
+  .hero-content .btn-primary {
+      font-size: 0.8rem; /* Perkecil tombol */
+      padding: 6px 12px;
+  }
+
+  .hero-image {
+      width: 100%; /* Gunakan seluruh lebar layar */
+  }
+}

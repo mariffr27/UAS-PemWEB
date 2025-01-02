@@ -16,50 +16,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
-    <nav>
-    <img src="assets/images/logo.png" alt="logo" class="logo-web" style="max-width: 100px;">
-    <button class="menu-toggle">☰</button>
-        <ul class="navbar">
+    <header>
+        <nav>
+            <div class="main-bar">
+                <img src="assets/images/logo.png" alt="logo" class="logo-web" style="max-width: 100px;">
+                <button class="menu-toggle">☰</button>
+                <ul class="navbar">
+                    <li><a href="Index.php">Beranda</a></li>
+                    <li><a href="menu-class.php">Kelas</a></li>
+                    <li><a href="menu-forum.php">Forum</a></li>
+                    <li><a href="menu-aboutUs.php">About Us</a></li>        
+                </ul>
+                <?php if (isset($_SESSION['user'])): ?>
+                    <div class="user-info">
+                        <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
+                        <a href="logout.php"><button class="btn-logout">Keluar</button></a>
+                    </div>
+                <?php else: ?>
+                    <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+                <?php endif; ?>
+            </div>
+        </nav>
+    
+    <div class="sidebar">
+        <span class="close-btn">&times;</span>
+        <ul>
             <li><a href="Index.php">Beranda</a></li>
             <li><a href="menu-class.php">Kelas</a></li>
             <li><a href="menu-forum.php">Forum</a></li>
             <li><a href="menu-aboutUs.php">About Us</a></li>
+            <li>
+            <?php if (isset($_SESSION['user'])): ?>
+            <div class="user-info">
+                <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
+                <a href="logout.php"><button class="btn-logout">Keluar</button></a>
+            </div>
+        <?php else: ?>
+            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
+        <?php endif; ?>
+            </li>
         </ul>
-        <?php if (isset($_SESSION['user'])): ?>
-            <div class="user-info">
-                <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
-                <a href="logout.php"><button class="btn-logout">Keluar</button></a>
-            </div>
-        <?php else: ?>
-            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
-        <?php endif; ?>
-    </nav>
-    <div class="sidebar">
-    <span class="close-btn">&times;</span>
-    <ul>
-        <li><a href="Index.php">Beranda</a></li>
-        <li><a href="menu-class.php">Kelas</a></li>
-        <li><a href="menu-forum.php">Forum</a></li>
-        <li><a href="menu-aboutUs.php">About Us</a></li>
-    
-    </ul>
-    <?php if (isset($_SESSION['user'])): ?>
-            <div class="user-info">
-                <span>Halo, <?= htmlspecialchars($_SESSION['user']['name']); ?></span>
-                <a href="logout.php"><button class="btn-logout">Keluar</button></a>
-            </div>
-        <?php else: ?>
-            <a href="menu-login.php"><button class="btn-login">Masuk</button></a>
-        <?php endif; ?>
     </div>
-
-</div>
-<div class="overlay"></div>
         
 </header>
-
-
     <section class="hero">
         <div class="hero-content">
             <h1>Tingkatkan kemampuan belajar hari ini!</h1>
@@ -75,7 +74,7 @@
         <div class="judul"><p>Pelajari berbagai Bahasa Pemograman <br> Terpopuler dan Relavan Di Industri</p></div>
             <div class="learning-options-container">
                 
-                <a href="menu-class-enroll.php?course=frontend" class="learning-card-link">
+                <a href="menu-class.php?course" class="learning-card-link">
                     <div class="learning-option">
                         <img src="assets/images/icon-frontend.png" alt="Gambar 1">
                         <div class="text">
@@ -85,7 +84,7 @@
                     </div>
                 </a>
 
-                <a href="menu-class-enroll.php?course=backend" class="learning-card-link">
+                <a href="menu-class.php?course" class="learning-card-link">
                     <div class="learning-option">
                         <img src="assets/images/icon-backend.png" alt="Gambar 2">
                         <div class="text">
@@ -95,7 +94,7 @@
                     </div>
                 </a>
 
-                <a href="menu-class-enroll.php?course=mobile" class="learning-card-link">
+                <a href="menu-class.php?course" class="learning-card-link">
                     <div class="learning-option">
                         <img src="assets/images/icon-mobile.png" alt="Gambar 3">
                         <div class="text">
@@ -105,7 +104,7 @@
                     </div>
                 </a>
 
-                <a href="menu-class-enroll.php?course=datascience" class="learning-card-link">
+                <a href="menu-class.php?course" class="learning-card-link">
                     <div class="learning-option">
                         <img src="assets/images/icon-DataScience.jpg" alt="Gambar 4">
                         <div class="text">
@@ -114,6 +113,7 @@
                         </div>
                     </div>
                 </a>
+                <div id="courseOptionsContainer"></div>
         </div>
     </section>
 
@@ -121,7 +121,7 @@
         <h1>Program Kami</h1>
         <div class="program-cards-container">
             <div class="program-card">
-                <img src="https://www.chauvellaw.com/wp-content/uploads/2023/08/Depositphotos_27630083_S.jpg" alt="Program 1">
+                <img src="assets/images/program-img1.jpg" alt="Program 1">
                 <div class="program-info">
                     <h3>Untuk Pemula</h3>
                     <p>Program ini dirancang khusus untuk pemula yang ingin membangun dasar pengetahuan yang kuat.</p>
@@ -208,6 +208,11 @@
         </div>
     </footer>
     <script>
+
+        // Course Selector by name
+        
+        // end 
+
     document.addEventListener("DOMContentLoaded", function () {
         // Seleksi tombol dengan class 'btn-primary'
         const startLearningButton = document.querySelector(".btn-primary");
@@ -227,27 +232,20 @@
     });
 
     const sidebar = document.querySelector('.sidebar');
-const overlay = document.querySelector('.overlay');
-const toggleButton = document.querySelector('.menu-toggle'); // Tombol untuk membuka sidebar
-const closeButton = document.querySelector('.close-btn'); // Tombol untuk menutup sidebar
+    const toggleButton = document.querySelector('.menu-toggle'); // Tombol untuk membuka sidebar
+    const closeButton = document.querySelector('.close-btn'); // Tombol untuk menutup sidebar
 
-// Fungsi untuk membuka sidebar
-toggleButton.addEventListener('click', () => {
-    sidebar.classList.add('active');
-    overlay.classList.add('active');
-});
+    // Fungsi untuk membuka sidebar
+    toggleButton.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
 
-// Fungsi untuk menutup sidebar
-closeButton.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-// Menutup sidebar saat overlay diklik
-overlay.addEventListener('click', () => {
-    sidebar.classList.remove('active');
-    overlay.classList.remove('active');
-});
+    // Fungsi untuk menutup sidebar
+    closeButton.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
 
 </script>
 
