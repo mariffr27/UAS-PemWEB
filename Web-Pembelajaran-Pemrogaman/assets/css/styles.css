@@ -24,7 +24,7 @@ a {
 
 /* Header */
 header {
-    background: #f8f9fa;
+    background: #f3f3f3;
     padding: 10px 20px;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -32,18 +32,11 @@ header {
     z-index: 1000;
 }
 
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #007BFF;
-}
-
 nav {
     display: flex;
     align-items: center;
     gap: 20px;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 nav ul {
@@ -56,6 +49,26 @@ nav ul li {
     font-size: 1rem;
 }
 
+.navbar {
+    display: flex;
+    list-style: none;
+}
+
+.menu-toggle {
+    display: none; /* Sembunyikan secara default */
+    font-size: 1.5rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+
 .btn-login {
     padding: 8px 16px;
     background: #007BFF;
@@ -63,7 +76,76 @@ nav ul li {
     border: none;
     border-radius: 4px;
     cursor: pointer;
+
 }
+
+
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Awalnya tersembunyi di sebelah kanan */
+    width: 250px;
+    height: 100%;
+    background-color: #007BFF;
+    color: #fff;
+    overflow-y: auto;
+    transition: right 0.3s ease-in-out;
+    padding: 15px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Bayangan di sisi kiri sidebar */
+    z-index: 999; /* Pastikan di atas elemen lainnya */
+}
+.sidebar.active {
+    right: 0; /* Geser sidebar masuk ke dalam layar */
+}
+
+/* Close Button (X) */
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Overlay (opsional) */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999; /* Di bawah sidebar */
+    transition: opacity 0.3s ease-in-out;
+}
+
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+
+.close-btn {
+    font-size: 24px;
+    text-align: left; /* Tetap di kiri dalam sidebar */
+    cursor: pointer;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
 
 /* Login user */
 .user-info {
@@ -118,17 +200,19 @@ nav .btn-logout:hover {
 }
 
 .hero-content p {
+    font-size: 1rem;
+    line-height: 1.5;
     margin-bottom: 20px;
 }
 
 .btn-primary {
+    background-color: #007bff;
+    color: #fff;
     padding: 10px 20px;
-    background: #fff;
-    color: #007BFF;
     border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 5px;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .hero-image img {
@@ -142,10 +226,17 @@ nav .btn-logout:hover {
     font-size: 1.5em; 
     margin-bottom: 20px; 
 }
+.judul p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
 
 .learning-options {
     text-align: center;
     margin: 50px 0;
+    padding: 20px;
 }
 
 .learning-options h1 {
@@ -155,7 +246,7 @@ nav .btn-logout:hover {
 
 .learning-options-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 30px; 
     justify-items: center;
     max-width: 1000px;
@@ -163,17 +254,19 @@ nav .btn-logout:hover {
 }
 
 .learning-option {
-    display: flex;
-    align-items: center; 
-    background-color: white;
-    padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 230px; 
-    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    padding: 20px;
     transition: transform 0.3s ease;
-    margin: 0; 
+    width: 100%;
+    max-width: 200px;
+}
+
+.learning-options-container a {
+    color: #222;
 }
 
 .learning-option:hover {
@@ -181,12 +274,15 @@ nav .btn-logout:hover {
 }
 
 .learning-option img {
-    width: 80px; 
-    margin-right: 15px; 
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 15px;
 }
 
 .learning-option .text {
-    font-size: 1.2em;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #333;
 }
 
 /* Programs Section */
@@ -440,49 +536,123 @@ footer {
 }
 
 
-/* Responsive Design */
-
-/* Untuk layar kecil (ponsel) */
-@media (max-width: 768px) {
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    .navbar {
+        display: none;
     }
 
+    .menu-toggle {
+        display: block;
+    }
+
+    .btn-login {
+        display: none; /* Sembunyikan di navbar */
+    }
+
+    /* Class Hero */
     .hero {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* Susun elemen secara vertikal */
+        text-align: center; /* Pusatkan teks */
+        gap: 30px; /* Tambahkan jarak antar elemen */
     }
 
     .hero-content {
-        max-width: 100%;
-    }
-
-    .hero-image {
-        margin-top: 20px;
-    }
-
-    .learning-options-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .program-cards-container {
-        flex-direction: column;
-    }
-
-    .testimonial-cards {
-        flex-direction: column;
-    }
-}
-
-/* Untuk layar menengah (tablet) */
-@media (max-width: 1024px) {
-    .learning-options-container {
-        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%; /* Gunakan seluruh lebar layar */
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2rem; /* Sesuaikan ukuran teks */
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+    }
+
+    .hero-content .btn-primary {
+        font-size: 0.9rem; /* Sesuaikan ukuran tombol */
+        padding: 8px 16px;
+    }
+
+    .hero-image {
+        width: 80%; /* Batasi lebar gambar */
+        margin: 0 auto; /* Pusatkan gambar */
+    }
+
+    /* Learning card */
+    .learning-options-container {
+        grid-template-columns: repeat(2, 1fr, 1fr); /* 2 kolom untuk layar tablet */
+        gap: 15px; /* Kurangi jarak antar kartu */
+    }
+
+    .learning-option {
+        max-width: 180px; /* Kurangi ukuran kartu */
+    }
+
+    .judul p {
+        font-size: 1.2rem; /* Kurangi ukuran teks judul */
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .navbar {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .btn-login {
+        display: none; /* Sembunyikan di navbar */
+    }
+    .hero {
+        padding: 20px; /* Kurangi padding */
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem; /* Kurangi ukuran teks */
+    }
+
+    .hero-content p {
+        font-size: 0.9rem; /* Kurangi ukuran teks deskripsi */
+    }
+
+    .hero-content .btn-primary {
+        font-size: 0.8rem; /* Perkecil tombol */
+        padding: 6px 12px;
+    }
+
+    .hero-image {
+        width: 100%; /* Gunakan seluruh lebar layar */
+    }
+
+    /* Learning card */
+    
+    .learning-options-container {
+        display: grid;
+        grid-template-columns: 1fr; /* 1 kolom untuk layar ponsel */
+    }
+
+    .learning-option {
+        width: 100%;
+    }
+
+    .judul p {
+        font-size: 1rem; /* Kurangi ukuran teks lebih lanjut */
+    }
+
+    /* Program card section */
+
+    .programs h1 {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+    }
+    
+
+    .program-cards-container {
+        max-width: 300px; 
+        margin: 0 auto; 
     }
 }
